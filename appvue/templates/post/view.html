@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}{$ post['title'] $}{% endblock %}
+
+{% block content %}
+	<h2>{$ post['title'] $}</h2>
+	<small v-if="post['edit']">(изменено)</small>
+	<hr>
+	{$ post['content'] $}<br>
+	<hr>
+	<em>Автор: </em>{$ post['user_login'] $}<br>
+	<em>Дата публикации: </em>{$ post['publication']['date'] $}<br>
+	<em>Время публикации: </em>{$ post['publication']['time'] $}
+{% endblock %}
+
+{% block scripts %}
+	{{ super() }}
+	<script type="text/javascript" src="{{ url_for('static', filename='vue.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='axios.js') }}"></script>
+	<script type="text/javascript">
+		let container = new Vue({
+			el: 'div.container',
+			delimiters: ['{$', '$}'],
+			data: {
+				post: {}
+			},
+			mounted() {
+				axios
+					.get("{{ url_for('api.post', id=id) }}")
+					.then(response => this.post = response.data)
+			}
+		})
+	</script>
+{% endblock %}

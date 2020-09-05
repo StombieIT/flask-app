@@ -1,0 +1,40 @@
+<style type="text/css">
+	h2,
+	b,
+	a,
+	em,
+	small {
+		font-family: sans-serif;
+		line-height: 1.15;
+		-webkit-text-size-adjust: 100%;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	}
+	.btn {
+		display: inline-block;
+		font-weight: 400;
+		color: #212529;
+		text-align: center;
+		vertical-align: middle;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		background-color: transparent;
+		border: 1px solid transparent;
+		padding: 0.375rem 0.75rem;
+		font-size: 1rem;
+		line-height: 1.5;
+		border-radius: 0.25rem;
+		transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	}
+	.btn-outline-primary {
+		color: #007bff;
+		border-color: #007bff;
+	}
+</style>
+<h2>Подтверждение регистрации</h2>
+<hr>
+<b>@{{ login }}</b><br>
+<a class="btn btn-outline-primary" href="{{ link }}">Подтвердить регистрацию</a>
+<hr>
+<em><small>(Не переходите по данной ссылке, если вы не регистрировались на нашем сайте)</small></em>

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+	<h2>Главная</h2>
+{% endblock %}
+
+{# {% block content %}
+	<template v-for="post in page['posts']">
+		<div class="card mb-4 shadow-sm">
+			<div class="card-header">
+				<b>{$ post['title'] $}</b><small v-if="post['edit']"> (изменено)</small>
+			</div>
+			<div class="card-body">
+				@{$ post['user_login'] $}<br>
+				<a class="btn btn-outline-primary" v-bind:href="post['view_url']">Посмотреть</a>
+			</div>
+		</div>
+	</template>
+{% endblock %}
+
+{% block scripts %}
+	{{ super() }}
+	<script type="text/javascript" src="{{ url_for('static', filename='vue.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='axios.js') }}"></script>
+	<script type="text/javascript">
+		new Vue({
+			el: 'div.container',
+			delimiters: ['{$', '$}'],
+			data: {
+				page: []
+			},
+			mounted() {
+				axios
+					.get("{{ url_for('api.posts', page=1) }}")
+					.then(response => this.page = response.data)
+			}
+		})
+	</script>
+{% endblock %} #}
